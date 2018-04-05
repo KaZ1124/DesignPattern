@@ -30,7 +30,7 @@
 	\thesection.\arabic{table}}
 	\@addtoreset{table}{section}
 	
-	\@addtoreset{footnote}{page}%ページごとにFootNoteカウンタをリセット
+	\@addtoreset{footnote}{section}%セクションごとにFootNoteカウンタをリセット
 \makeatother
 
 \begin{document}
@@ -52,6 +52,10 @@
 			\caption{参考文献}\label{fig::book}
 		\end{figure}
 	\end{abstract}
+	
+	\clearpage
+	\tableofcontents
+	\clearpage
 	
 	\section{Iteratorパターン}
 	\subsection{概要}
@@ -111,7 +115,14 @@
 			しかし、今必要なのは日本語と英語の翻訳機能だけだと言った場合に、
 			このパターンを使ってシンプルな振る舞いのクラスに作り変えることができる。
 			
-			今必要な振る舞いをTarget、適合される対象をAdaptee、適合させるクラスをAdapterと呼ぶ。
+			出てくる用語としては以下の３つがある。
+			
+			\begin{description}
+				\item[Target]現在の環境で必要な振る舞い
+				\item[Adaptee]適合される対象
+				\item[Adapter]適合させるクラス
+			\end{description}
+
 			
 			このパターンの実現には以下の２通りの実現方法がある。
 			\begin{itemize}
@@ -194,9 +205,63 @@ Target obj = new Adapter();
 			勤務日だったのもあり、前回同様１つのデザインパターンしか書けなかったが、この調子で進めていこう。
 			\clearpage
 			
+	\section{Template Methodパターン}
+		\subsection{概要}
+			処理の大まかな流れを定めて、
+			細かな処理は子クラスに任せるようなイメージを持っている。
 			
+			親クラスでいくつか抽象メソッドを作っておき、
+			その抽象メソッドを使って、別のメソッドの内容を定義する。
+			その親クラスは抽象クラスとなるが、
+			継承を用いて抽象メソッドの実装を行うことで、全てのメソッドが使用可能となる。
 			
+		\subsection{例}
+			図\ref{fig::TemplateMethod1}はTemplateMethodパターンの一例を考えたものだ。
+			Productsクラスは商品を扱うクラスで、
+			商品の価格と数量から合計金額をgetPrizeメソッドで計算出来るようにする。
 			
+			Product1〜3のクラスはProductsクラスを継承し、
+			getUnitPrizeという商品単価をもとめるメソッド、
+			getNumberという商品の個数をもとめるメソッドをオーバーライドする
+			\footnote{実際にはメソッドよりプロパティにするべきかもしれない。
+			このパターンにする必要性はあまり感じないかもしれないが、
+			Product1はネットから、Product2はHDから、といったように情報の取得方法が違う場合を想定している。}。
+			
+			このようにすることで、Product1〜3のgetPrizeはそれぞれ適切な方法で単価と数量を取得し、
+			合計金額を計算するgetPrizeメソッドを適切な方法で計算させることができる。
+			
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width = 0.5\hsize]{TemplateMethodPattern.pdf}
+				\caption{TemplateMethodパターンの一例}
+				\label{fig::TemplateMethod1}
+			\end{figure}
+			
+		\subsection{私見}
+			このパターンは何回か使ったことがあったが、
+			あまり積極的に使ったことは無かった。
+			
+			複数のクラスに継承される親クラスを作る場合は常にこの考え方を念頭に入れるべきだと思った。
+			「何か似ているクラスを作っているな〜」と感じた時にもこのパターンを視野に入れて作ってみたい。
+		
+		\color{red}
+		\subsection{疑問点}
+			特になし
+		\color{black}
+		
+		\section*{\textcolor{blue}{2018年4月4日時点のコメント}}
+		\subsection*{\textcolor{blue}{感想}}
+			最近忙しくてなかなか手がつけられていなかったが、
+			今日はなんとか1章進めることができた。
+			
+			FactoryMethod、Singletonなど
+			２章先ぐらいまでは読んでいるが、
+			レポートの方が遅れ気味なので追いつきたい。
+			\clearpage
+			
+		%\section{FactoryMethodパターン}
+		%	\subsection{概要}
+				
 			
 			
 			
