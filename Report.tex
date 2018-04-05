@@ -43,7 +43,7 @@
 		3日坊主にならないように気をつけよう\verb|^^|
 		
 		このレポートは「Java言語で学ぶ　デザインパターン入門」（図\ref{fig::book}参考）を元に作っている。
-		本を読んで理解した後、なるべく本を見ずに概要・例・私見・疑問点を書いて理解を確認する形式で進めていこうと思う。
+		本を読んで理解した後、なるべく本を見ずに概要・例・考察・疑問点を書いて理解を確認する形式で進めていこうと思う。
 		
 		１日の終わりには感想をまとめておく。
 		\begin{figure}[htbp]
@@ -81,7 +81,7 @@
 			\caption{（例）Iteratorパターン}\label{fig::iterator}
 		\end{figure}
 		
-	\subsection{私見}
+	\subsection{考察}
 		C++のIteratorと同じようなものかと思ったが、それは今回のパターンとは少し実装の仕方が違っている気がした。
 		特にC++はインターフェースを使っておらず、Iteratorクラスの定義が、Aggregateクラスの中に書かれていた覚えがある。
 		C\#のIEnumerableとIEnumeratorがこのパターンを使っているのだろうと感じた。
@@ -163,7 +163,7 @@ Target obj = new Adapter();
 			この方法で作成すれば、使用者ClientはAnimalVoiceの仕様を理解していなくてもコードが書け、
 			メソッド名もgetCorrectVoiceのように、現在のプロジェクトに適したメソッド名に置き換えることができる。
 		
-		\subsection{私見}
+		\subsection{考察}
 			Adapterパターンは今までよく使っていたが、今回学んだ設計方法とは少し異なっていた。
 			特に、Targetの概念を無視して作っていたと思う。今まではAdapterを直接使用するイメージだ。
 			C言語ライブラリをC++でクラスのように扱うというような場合は今までの方法で良かったのかもしれないが、
@@ -237,7 +237,7 @@ Target obj = new Adapter();
 				\label{fig::TemplateMethod1}
 			\end{figure}
 			
-		\subsection{私見}
+		\subsection{考察}
 			このパターンは何回か使ったことがあったが、
 			あまり積極的に使ったことは無かった。
 			
@@ -259,22 +259,194 @@ Target obj = new Adapter();
 			レポートの方が遅れ気味なので追いつきたい。
 			\clearpage
 			
-		%\section{FactoryMethodパターン}
-		%	\subsection{概要}
+		\section{FactoryMethodパターン}
+			\subsection{概要}
+				あらかじめ抽象クラスを用いて、作成者と製品を作る。
 				
+				この際、作成者クラスには製品クラスを作成するためのメソッド（ここではCreate）を設ける。
+				Createメソッド自体を抽象メソッド
+				\footnote{抽象ではなく仮装メソッドとして、デフォルトの処理を書いておいても良い。}
+				として子クラスに実装を任しても良いが、
+				Createメソッドの中身が複雑な場合にTemplateMethodパターンを用いて、
+				子クラスに実装を任すことで、
+				インスタンスの作成方法を一般化することができる。
+				
+				製品クラスは抽象クラスとし、製品の振る舞いを抽象メソッドで定めておく。
+				
+				あとは、この２つのクラスを継承し、具体的な作成者クラス、具体的な製品クラスを作っていく。
+				
+			\subsection{例}
+				シューティングゲームなどに用いられる弾やレーザーなどのオブジェクトを管理する際などに、
+				このパターンを用いることを例に挙げていく。
+				弾の作成にはルールがあり、1秒以内に複数の弾は作成できないものとする。
+				つまり、一度弾を作ると１秒間新しい弾は作れないものとする。
+				ただ、レーザーについては3秒間に１回とする。
+				
+				クラス名については以下のように定める\footnote{もう少し良い命名があったとは思うけど...}。
+				コードは図\ref{fig::factoryMethod1}の様になった。
+				\begin{description}
+					\item[Factory]{作成者クラス}
+					\item[Product]{製品クラス}
+					\item[BulletFactory]{弾の作成者クラス}
+					\item[Bullet]{弾の製品クラス}
+					\item[LaserFactory]{レーザーの作成者クラス}
+					\item[Laser]{レーザーの製品クラス}
+				\end{description}
+				
+				このように作ることで、
+				何秒間に１回までしか作成できないという決まりごとを定めることができる。
+				また新しく爆弾オブジェクトを作ることになった場合でも、
+				時間確認の処理の実装を忘れることはない。
+				
+				\begin{figure}[htbp]
+					\centering
+					\begin{lstlisting}[basicstyle=\ttfamily\scriptsize, frame=single] 
+abstract class Factory{
+	private Time beforeTime;
+	
+	public Product create(Point pt){
+		Time now = Now();
+		bool judge = judgeCreate(now - beforeTime);
+		beforeTime = now;
+	
+		if(judge){
+			return createProduct(pt);
+		}else{
+			return null;
+		}
+	}
+	
+	public abstract Product createProduct(Point pt);
+	public abstract bool judgeCreate(Time tm);
+}
+
+class BulletFactory : Factory{
+	public override Product createProduct(Point pt)(
+		return new Bullet(Point pt);
+	}
+	
+	public override bool judgeCreate(Time tm){
+		return tm.toSecond() >= 1.0;
+	}
+}
+
+class LaserFactory : Factory{
+	public override Product createProduct(Point pt){
+		return new Laser(Point pt);
+	}
+	
+	public override bool judgeCreate(Time tm){
+		return tm.toSecond() >= 3.0;
+	}
+}
+
+abstract class Product{
+	...
+}
+
+class Bullet : Product{
+	public Point centerPoint;
+	public Bullet(Point pt){
+		centerPoint = pt;
+	}
+	
+	...
+}
+
+class Laser : Product{
+	...
+}
+					\end{lstlisting}
+					\caption{FactoryMethodパターンの一例}
+					\label{fig::factoryMethod1}
+				\end{figure}
 			
+			\subsection{考察}
+				このデザインパターンはまだ使ったことがなかった。
+				TemplateMethodパターンに似ているが、
+				作成方法の枠組みを定めているところが前回との違いだと思う。
+				
+				インスタンスの作成方法から振る舞いまで酷似しているようなクラスを設計する場合には、
+				このパターンを使うことになるのかもしれない。
 			
+			\color{red}
+			\subsection{疑問点}
+				\subsubsection{製品クラスの設計}
+					今回の例では、内容について省略させてもらったが、
+					製品クラスに振る舞い（つまりメソッド）のみしか記入しないのであれば、
+					インターフェイスを使うこともできるのではないか、という疑問が残った。
+					
+					製品クラスを継承するような事例がないのでどちらでもいいのかもしれない。
+					もしくは製品クラスに変数を持たせる必要が出てくる場合もあるのかもしれない。				
+			\color{black}
 			
+	\section{Singletonパターン}
+		\subsection{概要}
+			プログラム上であるクラスのインスタンスが必ず１つしか存在しないことを保証するためのデザインパターン。
 			
+			クラスのフィールドに自分自身を保持する静的メンバを持ち、メソッドでその変数を返せるようにする。
+			変数、コンストラクタはprivateとし、クラス外から新しいインスタンスは作らせないようにする。
 			
+		\subsection{例}
+			図\ref{fig::Singleton1}はメソッドを呼ぶたびに、$1\cdot 2\cdot 3\cdots$と数値を返す例だ。
 			
+			\begin{figure}[htbp]
+				\centering
+				\begin{lstlisting}[basicstyle=\ttfamily\scriptsize, frame=single] 
+class CountNumber{
+	private num = 0;
+
+	private static CountNumber singleton = new CountNumber();
+	
+	private CountNumber() { }
+	
+	public CountNumber Singleton{
+		get{
+			return singleton;
+		}
+	}
+	
+	public getCount(){
+		return ++num;
+	}
+}
+				\end{lstlisting}
+				\caption{Singletonパターンの一例}
+				\label{fig::Singleton1}
+			\end{figure}
 			
+		\subsection{考察}
+			このパターンについては聞いたことがあるだけのレベルで、
+			実際どんな時に使えば良いかは考えたことがなかった。
 			
+			しかし、前章のFactoryMethodパターンの製作者クラスをSingletonパターンで実装することは
+			有効なのではないかと思った。
 			
+		\color{red}
+		\subsection{疑問点}
+			\subsubsection{静的クラスとの使い分け}
+				Singletonパターンと静的クラスは非常によく似ていると思う。
+				
+				静的クラスは継承出来ないので、FactoryMethodパターンなどに応用する場合は、
+				Singletonパターンを使うべきだと思う。
+				
+				しかし、使い分けの基準が継承できるかどうかだけなのかはまだ疑問な部分。
+				Singletonは引数に出来る...という理由も考えたが、
+				そもそも一つしかインスタンスはないのだから引数にする理由もあまりない気がしている。
+		\color{black}
 			
+		\section*{\textcolor{blue}{2018年4月6日時点のコメント}}
+			\subsection*{\textcolor{blue}{感想}}
+			今日はFactoryMethodパターン、Singletonパターンの２章を書いた。
 			
+			FactoryMethodはなかなか複雑で例を考えるのに苦労したが、
+			慣れればとても有用なパターンだと思った。
 			
-			
+			全23章なので$20\%$ほど終わったところ。
+			次はPrototypeパターン。なにやらインスタンスを作成する方法らしいので、
+			FactoryMethodと同じような分類なのか。
+			今後もこの調子で進めていこう。
+			\clearpage	
 			
 			
 			
