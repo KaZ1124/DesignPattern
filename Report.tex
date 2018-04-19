@@ -7,6 +7,28 @@
 \usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
 
 \usepackage{listings}
+\usepackage{plistings}
+\lstset{%
+ language={C},
+% backgroundcolor={\color[gray]{.85}},%
+ basicstyle={\small},%
+ identifierstyle={\small},%
+ commentstyle={\small},%\itshape},%
+ keywordstyle={\small},%\bfseries},%
+ ndkeywordstyle={\small},%
+ stringstyle={\small},%\ttfamily},
+ frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ numbers=left,%
+ xrightmargin=0zw,%
+ xleftmargin=3zw,%
+ numberstyle={\small},%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+
 %\begin{lstlisting}[basicstyle=\ttfamily\scriptsize, frame=single] 
 
 \usepackage{color}
@@ -44,6 +66,8 @@
 		
 		このレポートは「Java言語で学ぶ　デザインパターン入門」（図\ref{fig::book}参考）を元に作っている。
 		本を読んで理解した後、なるべく本を見ずに概要・例・考察・疑問点を書いて理解を確認する形式で進めていこうと思う。
+		
+		この本はJavaで書かれているが、自分でテストコードを作る場合はC\#で書いていく。
 		
 		１日の終わりには感想をまとめておく。
 		\begin{figure}[htbp]
@@ -244,10 +268,8 @@ Target obj = new Adapter();
 			複数のクラスに継承される親クラスを作る場合は常にこの考え方を念頭に入れるべきだと思った。
 			「何か似ているクラスを作っているな〜」と感じた時にもこのパターンを視野に入れて作ってみたい。
 		
-		\color{red}
 		\subsection{疑問点}
 			特になし
-		\color{black}
 		
 		\section*{\textcolor{blue}{2018年4月4日時点のコメント}}
 		\subsection*{\textcolor{blue}{感想}}
@@ -435,18 +457,180 @@ class CountNumber{
 				そもそも一つしかインスタンスはないのだから引数にする理由もあまりない気がしている。
 		\color{black}
 			
-		\section*{\textcolor{blue}{2018年4月6日時点のコメント}}
-			\subsection*{\textcolor{blue}{感想}}
-			今日はFactoryMethodパターン、Singletonパターンの２章を書いた。
+	\section*{\textcolor{blue}{2018年4月6日時点のコメント}}
+		\subsection*{\textcolor{blue}{感想}}
+		今日はFactoryMethodパターン、Singletonパターンの２章を書いた。
+		
+		FactoryMethodはなかなか複雑で例を考えるのに苦労したが、
+		慣れればとても有用なパターンだと思った。
+		
+		全23章なので$20\%$ほど終わったところ。
+		次はPrototypeパターン。なにやらインスタンスを作成する方法らしいので、
+		FactoryMethodと同じような分類なのか。
+		今後もこの調子で進めていこう。
+		\clearpage	
 			
-			FactoryMethodはなかなか複雑で例を考えるのに苦労したが、
-			慣れればとても有用なパターンだと思った。
+	\section{Prototypeパターン}
+		\subsection{概要}
+			PrototypeパターンはProductインターフェースのインスタンスを登録できるManagerクラスを作り、
+			そのManagerクラスが保持しているインスタンスを複製することで、
+			目的のインスタンスを取得していくパターンだ。
 			
-			全23章なので$20\%$ほど終わったところ。
-			次はPrototypeパターン。なにやらインスタンスを作成する方法らしいので、
-			FactoryMethodと同じような分類なのか。
-			今後もこの調子で進めていこう。
-			\clearpage	
+			\begin{itemize}
+				\item{クラスの種類が多すぎる場合}
+				\item{クラスからのインスタンス生成が難しい場合}
+				\item{フレームワークと生成するインスタンスを分けたい場合}
+			\end{itemize}
+			
+			などの理由がある場合に使用する。
+			
+		\subsection{例}
+			指定されたパスの音声を再生する処理を例を考えてみる。
+			コードは図\ref{fig::Prototype1}のようになった。
+			
+			今回の例はこのパターンを使う必要性があまりないかもしれないが、
+			小中大の３つの音量で再生するSoundPlayerクラスのインスタンスをManager登録しておくことで、
+			再生する場合はManagerからインスタンスをクローンすることで解決できる。
+			
+			今回Productを実装しているクラスはSoundPlayerのみだが、
+			画像や動画にも対応させたければ新たにProductを実装しているクラスを作れば良い。
+			
+			\begin{figure}[htbp]
+				\centering
+				\begin{lstlisting}[basicstyle=\ttfamily\scriptsize, frame=single, tabsize = 4] 
+////////////////////////////////////////////////////////////////
+//Package.css
+public interface Product : ICloneable {
+	public abstract void play(string Path);
+	public abstract Product createClone();
+}
+
+public class Manager {
+	private Dictionary<string, Product> showCase;
+	
+	public Manager() {
+		showCase = new Dictionary<string, string>()
+	}
+	
+	public void register(string name, Product proto) {
+		showCase.Add(name, proto);
+	}
+	
+	public Product create(String protoname){
+		return (Product)showCase[protoname];
+	}
+}
+
+////////////////////////////////////////////////////////////////
+//Main.css
+public SoundPlayer : Product{
+	private double sizeOfSound;
+	
+	public SoundPlayer(double size){
+		sizeOfSound = size; //音量指定
+	}
+	
+	public void play(string Path) {
+		//Pathの音声をsizeOfSoundの音量で再生
+	}
+	
+	public Product createClone() {
+		try {
+			return (Product)clone();
+		}catch{
+			//エラー処理
+		}
+	}
+}
+
+public class MainClass{
+	public static void Main(string[] args){
+		//準備
+		Manager manager = new Manager();
+		
+		manager.register("Small", new SoundPlayer(0.2));
+		manager.register("Normal", new SoundPlayer(0.5));
+		manager.register("Big", new SoundPlayer(0.8));
+		
+		//生成
+		var p1 = manager.create("Small");
+		var p2 = manager.create("Normal");
+		var p3 = manager.create("Big");
+		
+		p1.play("Test/Sound1.mp3"); //小さい音量で再生
+		p2.play("Test/Sound2.mp3"); //普通の音量で再生
+		p3.play("Test/Sound3.mp3"); //大きな音量で再生
+	}
+}
+				\end{lstlisting}
+				\caption{Prototypeパターンの一例}
+				\label{fig::Prototype1}
+			\end{figure}
+			
+		\subsection{考察}
+			なんとなくFactoryMethodパターンに似たものを感じた。
+			FactoryMethodはクラス設計の大枠を指定してあげるようなものだが、
+			Prototypeはこれを使用者側目線でも大枠を指定してあげるようなもの？\footnote{うまく説明できない\verb|><|}
+			とも感じた。
+			
+			少しメンバーをいじるだけで挙動が大きく変わるようなクラスをManagerに複数登録しておき、
+			後で簡単にインスタンスを作成できるようにする役割もあると思う。
+			
+		\color{red}
+		\subsection{疑問点}
+			\subsubsection{クラスからのインスタンス生成が難しい?}
+				このパターンを使用する場合の説明で、
+				クラスからのインスタンス生成が難しい場合とあるが、
+				この点がまだいまいちよく分かっていない。
+				まだ実例が思い浮かばないからかもしれない。
+				
+			\subsubsection{クローンの意味}
+				初めこのパターンを見たときは、
+				初期化に多くの引数が必要になるような複雑なクラスがあった時、
+				いちいち引数を入れるのは面倒なので一旦どこかにインスタンスを保存しておくようなもの。
+				というイメージを持ったが、そのような考え方は本には書いていない。
+				
+				しかし、その目的ならClone関数などを使う理由が無くなってしまう。
+				今回の例ではManagerクラスにインスタンスを保存したが、
+				別にクローンを使わなくても、newで作ったインスタンスを登録すれば目的は満たされる。
+				フレームワークと生成するインスタンスを分けたい場合という意味なら理解はできるが...
+				
+				...というより今回の自分の例、本に載っている例では、結局Managerに登録したインスタンスの
+				メソッドを使うだけで終わりなので、createでインスタンスを複製しなくても参照を返す
+				だけで解決してしまう。
+				
+				まだPrototypeだからこそスッキリする！というような例が見つからない。
+
+		\color{black}
+			
+	\section*{\textcolor{blue}{2018年4月20日時点のコメント}}
+		\subsection*{\textcolor{blue}{感想}}
+			仕事の出張とその準備もあり、なかなか進められていなかったが、
+			今日はPrototypeパターンを書いた。
+			
+			なかなかこのパターンを使った実例が思いつかず、
+			メリットについてあまり理解できていないかもしれない。
+			もう少し実例を考えてみよう。
+			
+			次はBuilderパターン、なかなか複雑そうな名前だが何かを生成するパターンなのだろう...多分。
+			\clearpage		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			

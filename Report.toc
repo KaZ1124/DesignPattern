@@ -29,3 +29,10 @@
 \contentsline {subsection}{\numberline {5.3}考察}{12}
 \contentsline {subsection}{\numberline {5.4}疑問点}{12}
 \contentsline {subsubsection}{\numberline {5.4.1}静的クラスとの使い分け}{12}
+\contentsline {section}{\numberline {6}Prototypeパターン}{14}
+\contentsline {subsection}{\numberline {6.1}概要}{14}
+\contentsline {subsection}{\numberline {6.2}例}{14}
+\contentsline {subsection}{\numberline {6.3}考察}{14}
+\contentsline {subsection}{\numberline {6.4}疑問点}{14}
+\contentsline {subsubsection}{\numberline {6.4.1}クラスからのインスタンス生成が難しい?}{14}
+\contentsline {subsubsection}{\numberline {6.4.2}クローンの意味}{16}

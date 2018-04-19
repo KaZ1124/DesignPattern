@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2018.3.30)  6 APR 2018 06:43
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017) (preloaded format=platex 2018.3.30)  20 APR 2018 06:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -106,6 +106,22 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
+(./plistings.sty
+Package: plistings 2015/12/07 v0.10 Japanese support of listings package
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count102
+)
+\ltj@lst@frame@lslimit=\dimen136
+\lst@inputfile=\read1
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
@@ -137,30 +153,30 @@ Package graphics Info: Driver file: dvipdfmx.def on input line 99.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ))
-\Gin@req@height=\dimen136
-\Gin@req@width=\dimen137
+\Gin@req@height=\dimen137
+\Gin@req@width=\dimen138
 )
 (./mediabb.sty
 Package: mediabb 2006/10/26 v1.9 iNOUE Koich! <inoue@ma.ns.musashi-tech.ac.jp>
 ) (./Report.aux)
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -196,58 +212,60 @@ LaTeX Font Info:    ... okay on input line 36.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count102
+\c@lstlisting=\count103
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 37.
+(Font)              scaled to size 16.60605pt on input line 59.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 16.60605pt on input line 37.
+(Font)              scaled to size 16.60605pt on input line 59.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 37.
+(Font)              scaled to size 11.53198pt on input line 59.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 37.
+(Font)              scaled to size 11.53198pt on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 37.
+(Font)              <12> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 37.
+(Font)              <8> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 37.
+(Font)              <6> on input line 59.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 37.
+(Font)              scaled to size 5.76599pt on input line 59.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 39.
+(Font)              scaled to size 8.64899pt on input line 61.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 39.
+(Font)              scaled to size 8.64899pt on input line 61.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 39.
+(Font)              scaled to size 8.64899pt on input line 61.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 39.
+(Font)              scaled to size 8.64899pt on input line 61.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 67.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 67.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 67.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 67.
+
+LaTeX Warning: Reference `fig::book' on page 1 undefined on input line 67.
+
 File: ./image/book.jpg Graphic file (type bmp)
 <./image/book.jpg>
 [1
 
 ]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 57.
+(Font)              scaled to size 9.60999pt on input line 81.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 57.
+(Font)              scaled to size 9.60999pt on input line 81.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 57.
+(Font)              scaled to size 13.83836pt on input line 81.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 57.
+(Font)              scaled to size 13.83836pt on input line 81.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 57.
+(Font)              scaled to size 13.83836pt on input line 81.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 57.
- (./Report.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 2.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 2.
-)
+(Font)              scaled to size 13.83836pt on input line 81.
+ (./Report.toc)
 \tf@toc=\write3
 \openout3 = `Report.toc'.
 
@@ -255,52 +273,116 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 61.
+(Font)              scaled to size 11.53198pt on input line 85.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 61.
+(Font)              scaled to size 11.53198pt on input line 85.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 93.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 93.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 93.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 93.
+
+
+LaTeX Warning: Reference `fig::iterator' on page 3 undefined on input line 93.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 99.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 99.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 99.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 99.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 75.
+(Font)              scaled to size 6.72699pt on input line 99.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 75.
+(Font)              scaled to size 5.76599pt on input line 99.
 File: ./image/IteratorPattern-crop.pdf Graphic file (type pdf)
 <./image/IteratorPattern-crop.pdf>
- [3
+[3
 
 ] [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 153.
 
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 153.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 137.
+(Font)              scaled to size 6.72699pt on input line 161.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 137.
+(Font)              scaled to size 6.72699pt on input line 161.
 File: ./image/AdapterPattern1.pdf Graphic file (type pdf)
 <./image/AdapterPattern1.pdf>
 File: ./image/AdapterPattern2.pdf Graphic file (type pdf)
 <./image/AdapterPattern2.pdf>
- [5
 
-] [6] [7]
+
+LaTeX Warning: Reference `fig::Adapter1' on page 5 undefined on input line 183.
+
+
+
+LaTeX Warning: Reference `fig::Adapter2' on page 5 undefined on input line 183.
+
+
+[5
+
+] [6]
+
+LaTeX Warning: Reference `sub::adapter1' on page 7 undefined on input line 215.
+
+
+[7]
+
+LaTeX Warning: Reference `fig::TemplateMethod1' on page 8 undefined on input li
+ne 243.
+
 File: ./image/TemplateMethodPattern.pdf Graphic file (type pdf)
 <./image/TemplateMethodPattern.pdf>
-
 [8
 
-] [9] [10
+] [9]
 
-] [11] [12] [13] (./Report.aux) ) 
+LaTeX Warning: Reference `fig::factoryMethod1' on page 10 undefined on input li
+ne 308.
+
+[10
+
+] [11]
+
+LaTeX Warning: Reference `fig::Singleton1' on page 12 undefined on input line 4
+13.
+
+[12] [13]
+
+LaTeX Warning: Reference `fig::Prototype1' on page 14 undefined on input line 4
+89.
+
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 573.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 573.
+[14
+
+] [15] [16] (./Report.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2795 strings out of 493640
- 39442 string characters out of 6148698
- 136556 words of memory out of 5000000
- 6384 multiletter control sequences out of 15000+600000
- 16449 words of font info for 76 fonts, out of 8000000 for 9000
+ 3409 strings out of 493640
+ 47207 string characters out of 6148698
+ 296275 words of memory out of 5000000
+ 6983 multiletter control sequences out of 15000+600000
+ 17514 words of font info for 81 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 26i,8n,33p,2129b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 26i,8n,49p,2129b,1249s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Report.dvi (13 pages, 46188 bytes).
+Output written on Report.dvi (16 pages, 50120 bytes).
